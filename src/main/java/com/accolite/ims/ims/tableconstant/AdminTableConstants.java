@@ -4,8 +4,8 @@ public class AdminTableConstants {
 	
 	
 
-	public static final String ADMINTABLE="admintb";
-	public static final String ADMINSKILLTABLE="adminSkill";
+	public static final String JOBOPENINGTB="jobOpenings";
+	public static final String JOBOPENINGSKILLSET="JobOpeningSkills";
 	public static final String REQUIREMENTDETAILS="requirementDetails";
 	public static final String STARTDATE="startDate";
 	public static final String ENDDATE="endDate";
