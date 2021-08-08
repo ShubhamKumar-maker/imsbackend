@@ -5,23 +5,23 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.accolite.ims.ims.dao.AdminDao;
-import com.accolite.ims.ims.modles.Admin;
+import com.accolite.ims.ims.dao.JobOpeningDao;
+import com.accolite.ims.ims.modles.jobOpenings;
 import com.accolite.ims.ims.service.ImsService;
 
 @Service
 public class ImsServiceImpl implements ImsService {
 	
 	@Autowired
-	private AdminDao admindao;
+	private JobOpeningDao admindao;
 
 	@Override
-	public Admin save(Admin admin) {
+	public jobOpenings save(jobOpenings admin) {
 		return admindao.saveAdmin(admin);
 	}
 
 	@Override
-	public List<Admin> fetchAdmin() {
+	public List<jobOpenings> fetchAdmin() {
 		return admindao.getall();
 		
 	}

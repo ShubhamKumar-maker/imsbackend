@@ -10,13 +10,20 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Admin {
+public class jobOpenings {
 	private long requirementId;
 	private String requirementDetails;
 	private Date startDate;
 	private Date endDate;
 	private int noOfCandidates; 
-	private List<AdminSkillSet> adminskillset;
+	private long skillId;
+	private String skill;
+	public String getSkill() {
+		return skill;
+	}
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
 	public long getRequirementId() {
 		return requirementId;
 	}
@@ -47,10 +54,11 @@ public class Admin {
 	public void setNoOfCandidates(int noOfCandidates) {
 		this.noOfCandidates = noOfCandidates;
 	}
-	public List<AdminSkillSet> getAdminskillset() {
-		return adminskillset;
+	public long getSkillId() {
+		return skillId;
 	}
-	public void setAdminskillset(List<AdminSkillSet> adminskillset) {
-		this.adminskillset = adminskillset;
+	public void setSkillId(long skillId) {
+		this.skillId = skillId;
 	}
+	
 }
