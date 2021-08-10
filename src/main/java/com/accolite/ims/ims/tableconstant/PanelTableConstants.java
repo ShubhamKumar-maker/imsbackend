@@ -7,5 +7,6 @@ public class PanelTableConstants {
 	public static final String PANELSKILL="skill";
 	public static final String PANELMAXLEVEL="maxlevel";
 	public static final String PANELAVAILABLEID="panelavilabilityID";
+	
 
 }

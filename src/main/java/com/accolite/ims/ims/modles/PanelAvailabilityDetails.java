@@ -7,7 +7,7 @@ public class PanelAvailabilityDetails {
 	
 	private String panelId;
 	private Date panelavailabledate;
-	private Time panelavailabletime;
+	private String panelavailabletime;
 	private String panelskills;
 	private int maxlevel;
 	private long panelavailableID;
@@ -24,10 +24,10 @@ public class PanelAvailabilityDetails {
 	public void setPanelavailabledate(Date panelavailabledate) {
 		this.panelavailabledate = panelavailabledate;
 	}
-	public Time getPanelavailabletime() {
+	public String getPanelavailabletime() {
 		return panelavailabletime;
 	}
-	public void setPanelavailabletime(Time panelavailabletime) {
+	public void setPanelavailabletime(String panelavailabletime) {
 		this.panelavailabletime = panelavailabletime;
 	}
 	public String getPanelskills() {

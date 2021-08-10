@@ -16,6 +16,7 @@ import com.accolite.ims.ims.dao.Paneldetails;
 import com.accolite.ims.ims.dao.SheduleInterviewDao;
 import com.accolite.ims.ims.modles.Candidate;
 import com.accolite.ims.ims.modles.PanelAvailabilityDetails;
+import com.accolite.ims.ims.modles.PanelEvents;
 import com.accolite.ims.ims.modles.SheduleInterview;
 import com.accolite.ims.ims.modles.SkillSets;
 import com.accolite.ims.ims.modles.jobOpenings;
@@ -90,5 +91,23 @@ public class IMSController {
 	public List<SheduleInterview>getallsheduleinterview()
 	{
 		return sheduleInterviewdao.getallData();
+	}
+	
+	@GetMapping("/findEmployeeByID/{username}")
+	public boolean findEmployee(@PathVariable String username)
+	{
+		return imsservice.findbyId(username);
+	}
+	
+	@PostMapping("/setPanelAvailability")
+	public PanelAvailabilityDetails setPanelavailabilty(@RequestBody PanelAvailabilityDetails panelAvailability)
+	{
+		return paneldetails.setPanel(panelAvailability);
+	}
+	
+	@GetMapping("/getpanelallEvents/{panelId}")
+	public List<PanelEvents>getallEvents(@PathVariable String panelId)
+	{
+		return imsservice.getallevent(panelId);
 	}
 }
