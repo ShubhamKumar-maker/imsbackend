@@ -12,6 +12,7 @@ public class SheduleInterview {
 	private String interviewTime;
 	private String candidatename;
 	private String skill;
+	private String panelname;
 	public String getPanelID() {
 		return panelID;
 	}
@@ -53,6 +54,12 @@ public class SheduleInterview {
 	}
 	public void setSkill(String skill) {
 		this.skill = skill;
+	}
+	public String getPanelname() {
+		return panelname;
+	}
+	public void setPanelname(String panelname) {
+		this.panelname = panelname;
 	}
 	
 

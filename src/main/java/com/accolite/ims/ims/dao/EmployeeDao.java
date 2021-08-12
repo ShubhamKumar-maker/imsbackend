@@ -6,5 +6,6 @@ import com.accolite.ims.ims.modles.Employee;
 
 public interface EmployeeDao {
 	List<Employee> findEMployee();
+	Employee findEmployeeById(String emplID);
 
 }

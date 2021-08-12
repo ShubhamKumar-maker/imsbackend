@@ -27,4 +27,20 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		
 	}
 
+	@Override
+	public Employee findEmployeeById(String emplID) {
+		String query="select * from employee where username=\""+emplID+"\"";
+		return  (Employee) jdbctemplate.query(query,(resultSet)->{
+			while(resultSet.next()) {
+			Employee emp=new Employee();
+			emp.setEmployeeId(resultSet.getLong("employeeId"));
+			emp.setUsername(resultSet.getString("username"));
+			emp.setEmployeename(resultSet.getString("employeename"));
+			emp.setRole(resultSet.getString("role"));
+			return  emp;
+			}
+			return null;
+		});
+	}
+
 }

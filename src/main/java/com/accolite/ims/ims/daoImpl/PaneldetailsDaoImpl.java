@@ -30,7 +30,7 @@ public class PaneldetailsDaoImpl implements Paneldetails {
 
 	@Override
 	public List<PanelAvailabilityDetails> getdata(String skill,int maxlevel) {
-		String sqlquery="select * from panelavilability join panelDetails on panelavilability.panelid=panelDetails.panelid where panelDetails.skill=\""+skill+"\" and panelDetails.maxlevel>="+maxlevel+"";
+		String sqlquery="select * from panelavilability join employee on panelavilability.panelid=employee.username join panelDetails on panelavilability.panelid=panelDetails.panelid where panelDetails.skill=\""+skill+"\" and panelDetails.maxlevel>="+maxlevel+"";
 			
 		return jdbctemplate.query(sqlquery, (resultSet, rowNum)->{
 			PanelAvailabilityDetails pad=new PanelAvailabilityDetails();
@@ -40,6 +40,7 @@ public class PaneldetailsDaoImpl implements Paneldetails {
 			pad.setMaxlevel(resultSet.getInt(PanelTableConstants.PANELMAXLEVEL));
 			pad.setPanelskills(resultSet.getString(PanelTableConstants.PANELSKILL));
 			pad.setPanelavailableID(resultSet.getLong(PanelTableConstants.PANELAVAILABLEID));
+			pad.setEmployeename(resultSet.getString(PanelTableConstants.PANELNAME));
 			return pad;
 		});
 	}
@@ -67,6 +68,27 @@ public class PaneldetailsDaoImpl implements Paneldetails {
 			pe.setTitle(resultSet.getString(SheduleInterviewTableConstants.INTERVIEWTIME));
 			return pe;
 		});
+	}
+
+	@Override
+	public List<PanelEvents> getPanelFreeSlot(String panelId) {
+		String sqlqry="select availableDate,availableTime from panelavilability where panelid=\""+panelId+"\" and availableDate>=CURDATE();";
+		return jdbctemplate.query(sqlqry, (resultSet,rowNum)->{
+			PanelEvents pe=new PanelEvents();
+			pe.setStart(resultSet.getDate(PanelTableConstants.PANELAVAILABLEDATE));
+			pe.setTitle(resultSet.getString(PanelTableConstants.PANELAVAILABLETIME));
+			return pe;
+		});
+	}
+
+	@Override
+	public boolean deletepanelavailable(long panelavilabilityID) {
+		 String sql = "DELETE FROM panelavilability WHERE panelavilabilityID = ?";
+		    Object[] args = new Object[] {panelavilabilityID};
+
+		    return jdbctemplate.update(sql, args) == 1;
+		
+		
 	}
 
 }

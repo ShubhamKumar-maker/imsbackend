@@ -8,4 +8,6 @@ public class SheduleInterviewTableConstants {
 	public static final String INTERVIEWTIME="interviewTime";
 	public static final String CANDIDATEID="candidateID";
 	public static final String SKILLID="skillID";
+	public static final String SKILL="skills";
+	public static final String EMPLOYEENAME="employeename";
 }

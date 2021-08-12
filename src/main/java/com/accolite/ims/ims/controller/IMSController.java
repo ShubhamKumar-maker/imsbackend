@@ -3,6 +3,7 @@ package com.accolite.ims.ims.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accolite.ims.ims.dao.CandidateDao;
+import com.accolite.ims.ims.dao.EmployeeDao;
 import com.accolite.ims.ims.dao.JobOpeningDao;
 import com.accolite.ims.ims.dao.Paneldetails;
 import com.accolite.ims.ims.dao.SheduleInterviewDao;
 import com.accolite.ims.ims.modles.Candidate;
+import com.accolite.ims.ims.modles.Employee;
 import com.accolite.ims.ims.modles.PanelAvailabilityDetails;
 import com.accolite.ims.ims.modles.PanelEvents;
 import com.accolite.ims.ims.modles.SheduleInterview;
@@ -43,6 +46,9 @@ public class IMSController {
 	
 	@Autowired
 	private SheduleInterviewDao sheduleInterviewdao;
+	
+	@Autowired
+	private EmployeeDao employee;
 	
 	@GetMapping("/test")
 	public String testfun()
@@ -94,9 +100,10 @@ public class IMSController {
 	}
 	
 	@GetMapping("/findEmployeeByID/{username}")
-	public boolean findEmployee(@PathVariable String username)
+	public Employee findEmployee(@PathVariable String username)
 	{
-		return imsservice.findbyId(username);
+		//return imsservice.findbyId(username);
+		return employee.findEmployeeById(username);
 	}
 	
 	@PostMapping("/setPanelAvailability")
@@ -109,5 +116,21 @@ public class IMSController {
 	public List<PanelEvents>getallEvents(@PathVariable String panelId)
 	{
 		return imsservice.getallevent(panelId);
+	}
+	@GetMapping("/getpanelavailableDate/{panelId}")
+	public List<PanelEvents>getpanelavailableDate(@PathVariable String panelId)
+	{
+		return paneldetails.getPanelFreeSlot(panelId);
+	}
+	
+	@GetMapping("/getAllCandidates")
+	public List<Candidate>getAllCandidates()
+	{
+		return candidatedao.getallcandidates();
+	}
+	@DeleteMapping("/deletepanelavailablity/{id}")
+	public boolean deletebyID(@PathVariable long id)
+	{
+		return paneldetails.deletepanelavailable(id);
 	}
 }

@@ -11,6 +11,7 @@ public class PanelAvailabilityDetails {
 	private String panelskills;
 	private int maxlevel;
 	private long panelavailableID;
+	private String employeename;
 	
 	public String getPanelId() {
 		return panelId;
@@ -47,6 +48,12 @@ public class PanelAvailabilityDetails {
 	}
 	public void setPanelavailableID(long panelavailableID) {
 		this.panelavailableID = panelavailableID;
+	}
+	public String getEmployeename() {
+		return employeename;
+	}
+	public void setEmployeename(String employeename) {
+		this.employeename = employeename;
 	}
 	
 	

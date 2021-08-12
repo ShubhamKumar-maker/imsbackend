@@ -9,6 +9,8 @@ public interface Paneldetails {
 	List<PanelAvailabilityDetails>getdata(String skill,int maxlevel);
 	public PanelAvailabilityDetails setPanel(PanelAvailabilityDetails details);
 	public List<PanelEvents>getPanelAllEvents(String panelId);
+	public List<PanelEvents>getPanelFreeSlot(String panelId);
+	public boolean deletepanelavailable(long panelavailabilityid);
 	
 
 }

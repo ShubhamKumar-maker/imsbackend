@@ -30,4 +30,17 @@ public class CandidateDaoImpl  implements CandidateDao{
 		});
 	}
 
+	@Override
+	public List<Candidate> getallcandidates() {
+		String skillquery="select * from candidate";
+		return jdbctemplate.query(skillquery, (resultSet, rowNum)->{
+			Candidate candidate=new Candidate();
+			candidate.setCandidateId(resultSet.getLong(CandidateTableConstant.CANDIDATEID));
+			candidate.setName(resultSet.getString(CandidateTableConstant.CANDIDATNAME));
+			candidate.setSkill(resultSet.getLong(CandidateTableConstant.CANDIDATESKILL));
+			candidate.setCurrentlevel(resultSet.getInt(CandidateTableConstant.CANDIDATELEVEL));
+			return candidate;
+		});
+	}
+
 }

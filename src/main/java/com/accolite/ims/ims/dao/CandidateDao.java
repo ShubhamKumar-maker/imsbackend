@@ -7,5 +7,6 @@ import com.accolite.ims.ims.modles.Candidate;
 public interface CandidateDao {
 	
 	List<Candidate>getcandidatebySkill(String skill);
+	List<Candidate>getallcandidates();
 
 }
