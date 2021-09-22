@@ -1,0 +1,81 @@
+create table employee(
+employeeId bigint primary key auto_increment,
+username varchar(30) not null,
+password varchar(30) not null,
+employeename varchar(10),
+role varchar(10)
+);
+
+
+insert into employee(username,password,employeename,role) values ("shubham","123","shubham","admin");
+insert into employee(username,password,employeename,role) values ("hr123","123","shubham","hr");
+insert into employee(username,password,employeename,role) values ("hr234","123","chandrika","hr");
+insert into employee(username,password,employeename,role) values ("pl123","123","shubham","panel");
+insert into employee(username,password,employeename,role) values ("pl68","123","chandrika","panel");
+insert into employee(username,password,employeename,role) values ("pl89","123","hema","panel");
+
+
+create table candidate(
+candidateId bigint primary key auto_increment,
+skillid bigint not null,
+currentlevel int not null,
+name varchar(20) not null
+);
+
+
+insert into candidate(name,currentlevel,skillid)values("abc",0,1);
+insert into candidate(name,currentlevel,skillid)values("def",1,1);
+insert into candidate(name,currentlevel,skillid)values("aaa",2,2);
+insert into candidate(name,currentlevel,skillid)values("def",1,4);
+
+
+create table jobOpenings (
+requirementId bigint primary key AUTO_INCREMENT,
+requirementDetails varchar(20) not null,
+startDate date not null,
+enddate date not null,
+skillid int not null,
+noOfCandidates int not null);
+
+
+create table panelavilability(
+panelavilabilityID bigint primary key auto_increment,
+panelid varchar(30) not null,
+availableDate date,
+availableTime time
+);
+
+
+create table panelDetails(
+id bigint primary key auto_increment,
+panelid varchar(30) not null,
+skill varchar(10) not null, 
+maxlevel int not null);
+
+
+create table sheduleInterview(
+sheduleInterviewID bigint primary key auto_increment,
+panelID varchar(30) not null,
+interviewDate Date not null,
+interviewTime Time not null,
+candidateID bigint not null,
+skillID bigint not null
+);
+
+
+create table skillsSet(
+skillId bigint primary key auto_increment,
+skills varchar(20) not null
+);
+
+insert into skillsSet (skills) values ("java");
+insert into skillsSet (skills) values ("C++");
+insert into skillsSet (skills) values ("advance Java");
+insert into skillsSet (skills) values ("spring boot");
+insert into skillsSet (skills) values ("angular");
+insert into skillsSet (skills) values ("js");
+insert into skillsSet (skills) values ("react");
+insert into skillsSet (skills) values ("reactNative");
+insert into skillsSet (skills) values ("python");
+insert into skillsSet (skills) values ("html");
+insert into skillsSet (skills) values ("css");
